@@ -1,0 +1,437 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" expressionLocale="en-us" useStyleVersion="11">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding-top:32px;padding-left:32px"/>
+						</style>
+						<contents>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Enter comma separated column numbers:</staticValue>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding-bottom:6px;padding-left:24px;font-size:12pt"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<customControl description="ListColumnDisplay" path="/samples/javascript/ListColumnDisplay/ListColumnDisplay.js"/>
+								</contents>
+								<style>
+									<CSS value="padding-bottom:24px;padding-left:24px"/>
+								</style>
+							</block>
+							<list horizontalPagination="true" name="List1" refQuery="Query1">
+								<noDataHandler>
+									<contents>
+										<block>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>No Data Available</staticValue>
+													</dataSource>
+													<style>
+														<CSS value="padding:10px 18px;"/>
+													</style>
+												</textItem>
+											</contents>
+										</block>
+									</contents>
+								</noDataHandler>
+								<style>
+									<CSS value="border-collapse:collapse;font-size:12pt"/>
+									<defaultStyles>
+										<defaultStyle refStyle="ls"/>
+									</defaultStyles>
+								</style>
+								<listColumns>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>0 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Country"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Country"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>1 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="City"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="City"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>2 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="First name"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="First name"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>3 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Last name"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Last name"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>4 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Position"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Position"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>5 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Date hired"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Date hired"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>6 - </staticValue>
+													</dataSource>
+													<style>
+														<CSS value="color:#CCCCCC"/>
+													</style>
+												</textItem>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Email"/>
+													</dataSource>
+													<style>
+														<CSS value="font-weight:bold"/>
+													</style>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Email"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+								</listColumns>
+							</list>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="First name" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[First name]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Last name" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[Last name]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Date hired" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[Date hired]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="4" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="identifier" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Country" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[Country]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="City" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[City]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Email" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[Email]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Position" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Sales staff].[Position]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+	</queries>
+	<classStyles>
+		<classStyle name="ls">
+			<CSS value="color:#303030"/>
+		</classStyle>
+		<classStyle name="lt">
+			<CSS value="background-color:#6793CB;color:white;background-image:none;border:1pt solid white"/>
+		</classStyle>
+		<classStyle name="lc">
+			<CSS value="border:1pt solid #82B8FF"/>
+		</classStyle>
+		<classStyle name="lm">
+			<CSS value="border:1pt solid #82B8FF"/>
+		</classStyle>
+	</classStyles>
+</report>

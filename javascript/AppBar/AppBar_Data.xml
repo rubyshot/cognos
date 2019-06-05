@@ -1,0 +1,226 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" useStyleVersion="10" expressionLocale="en-us">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding:0px"/>
+						</style>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse;width:100%;height:100%"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<repeater name="Repeater1" refQuery="Query2">
+														<contents>
+															<block name="DataDrivenBlocks">
+																<contents>
+																	<viz type="az.Bubble" name="Bubble" outputType="static">
+																		<XMLAttributes>
+																			<XMLAttribute name="supportsDefaultDataFormatting" value="true" output="no"/>
+																			<XMLAttribute name="ETag" value="version=1" output="no"/>
+																		</XMLAttributes>
+																		<vizPropertyValues>
+																			<vizPropertyIntegerValue name="width">800</vizPropertyIntegerValue>
+																			<vizPropertyIntegerValue name="height">600</vizPropertyIntegerValue>
+																		</vizPropertyValues>
+																		<vizDataSets>
+																			<vizDataSet idDataSet="data" name="Bubble: Data" refQuery="Query2">
+																				<vizCategories>
+																					<vizCategoryEdge refEdge="categoriesEdge">
+																						<vizCategoryLevels>
+																							<vizCategoryLevel>
+																								<vizCategoryField idField="series" valueRange="all">
+																									<vizCategoryDataItems>
+																										<vizCategoryDataItem refDataItem="Product line"/>
+																									</vizCategoryDataItems>
+																								</vizCategoryField>
+																							</vizCategoryLevel>
+																							<vizCategoryLevel>
+																								<vizCategoryField idField="categories" valueRange="all"/>
+																							</vizCategoryLevel>
+																						</vizCategoryLevels>
+																					</vizCategoryEdge>
+																				</vizCategories>
+																				<vizValues>
+																					<vizValue idField="X" refDataItem="Quantity" rollupMethod="total">
+																						<vizValueRange>
+																							<vizValueRangeComputed rangeData="all"/>
+																						</vizValueRange>
+																					</vizValue>
+																					<vizValue idField="Y" rollupMethod="total" refDataItem="Gross profit">
+																						<vizValueRange>
+																							<vizValueRangeComputed rangeData="all"/>
+																						</vizValueRange>
+																						<style>
+																							<dataFormat>
+																								<currencyFormat/>
+																							</dataFormat>
+																						</style>
+																					</vizValue>
+																					<vizValue idField="size" refDataItem="Revenue" rollupMethod="total">
+																						<vizValueRange>
+																							<vizValueRangeComputed rangeData="all"/>
+																						</vizValueRange>
+																						<style>
+																							<dataFormat>
+																								<currencyFormat/>
+																							</dataFormat>
+																						</style>
+																					</vizValue>
+																				</vizValues>
+																				<masterDetailLinks>
+																					<masterDetailLink>
+																						<masterContext>
+																							<dataItemContext refDataItem="Order method type"/>
+																						</masterContext>
+																						<detailContext>
+																							<dataItemContext refDataItem="Order method type"/>
+																						</detailContext>
+																					</masterDetailLink>
+																				</masterDetailLinks>
+																			</vizDataSet>
+																		</vizDataSets>
+																	</viz>
+																</contents>
+																<style>
+																	<CSS value="display:none-block"/>
+																</style>
+															</block>
+														</contents>
+													</repeater>
+												</contents>
+												<style>
+													<CSS value="padding-top:32px;text-align:center"/>
+												</style>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:top"/>
+										</style>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+					<pageHeader>
+						<contents>
+							<block>
+								<contents>
+									<customControl path="/samples/javascript/AppBar/AppBar.js" description="AppBar">
+										<configuration><![CDATA[{
+    "Orientation": "horizontal",
+    "Align": "center",
+    "Background color": "#1C1C1C",
+    "Fill": "#F0F0F0",
+    "Selection fill": "#C8F08F",
+    "Selection border color": "#5AA700",
+    "Selection background color": "#1C1C1C",
+    "Cards": "DataDrivenBlocks",
+    "Select first card": true
+}]]></configuration>
+										<customControlDataSets>
+											<customControlDataSet refQuery="Query2" name="Custom Control Data Set">
+												<customControlCategories>
+													<customControlCategoryDataItem refDataItem="Order method type"/>
+												</customControlCategories>
+											</customControlDataSet>
+										</customControlDataSets>
+										<XMLAttributes>
+											<XMLAttribute name="currentDataSet" value="Custom Control Data Set" output="no"/>
+										</XMLAttributes>
+									</customControl>
+								</contents>
+								<style>
+									<CSS value="font-size:26pt;background-color:#1C1C1C;padding-top:16px;padding-bottom:16px"/>
+								</style>
+							</block>
+						</contents>
+					</pageHeader>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Order method type" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Order method].[Order method type]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+						<XMLAttribute name="RS_isCurrency" value="true" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Quantity" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Quantity]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="1" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Gross profit" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Gross profit]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+						<XMLAttribute name="RS_isCurrency" value="true" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Product line" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+			<detailFilters>
+				<detailFilter canBeChangedInAdvancedViewer="false" use="required" postAutoAggregation="false">
+					<filterDefinition>
+						<filterInValues refDataItem="Order method type" dataType="string" not="true">
+							<filterValues>
+								<filterValue>Sales visit</filterValue>
+								<filterValue>Special</filterValue>
+							</filterValues>
+						</filterInValues>
+					</filterDefinition>
+				</detailFilter>
+			</detailFilters>
+		</query>
+	</queries>
+</report>

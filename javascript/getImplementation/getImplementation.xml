@@ -1,0 +1,180 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" useStyleVersion="10" expressionLocale="en-us">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							<block>
+								<contents>
+									<block>
+										<contents>
+											<block>
+												<contents>
+													<textItem name="txtMsgBox">
+														<dataSource>
+															<staticValue/>
+														</dataSource>
+													</textItem>
+												</contents>
+											</block>
+										</contents>
+										<style>
+											<CSS value="padding:4px;background-color:#FFFFCC;font-family:Consolas;font-size:12pt;height:120px;width:750px"/>
+										</style>
+									</block>
+								</contents>
+							</block>
+							<block>
+								<contents>
+									<customControl description="getImplementation" uiType="none" path="/samples/javascript/getImplementation/getImplementation.js">
+										<configuration><![CDATA[{
+	"textItem" : "txtMsgBox",
+	"waitForControls" : ["Column Chart 1", "Column Chart 2"]
+}]]></configuration>
+									</customControl>
+								</contents>
+								<style>
+									<CSS value="padding-top:24px;padding-bottom:24px;padding-left:24px"/>
+								</style>
+							</block>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<customControl name="Column Chart 1" height="500px" width="900px" description="Column Chart #1" path="/samples/javascript/NewVisualization/C_NewVisualizationColumn.js">
+														<configuration><![CDATA[{
+	"bundle" : "rave-library-column",
+	"properties" :
+	{
+		"height" : "500",
+		"width" : "900"
+	}
+}]]></configuration>
+														<customControlDataSets>
+															<customControlDataSet name="DS1" refQuery="Custom Control Data Set Query1">
+																<customControlCategories>
+																	<customControlCategoryDataItem refDataItem="Product line"/>
+																</customControlCategories>
+																<customControlFacts>
+																	<customControlFact refDataItem="Revenue"/>
+																</customControlFacts>
+															</customControlDataSet>
+														</customControlDataSets>
+														<XMLAttributes>
+															<XMLAttribute name="currentDataSet" value="DS1" output="no"/>
+														</XMLAttributes>
+													</customControl>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<customControl name="Column Chart 2" height="500px" width="900px" description="Column Chart #2" path="/samples/javascript/NewVisualization/C_NewVisualizationColumn.js">
+														<configuration><![CDATA[{
+	"bundle" : "rave-library-column",
+	"properties" :
+	{
+		"height" : "500",
+		"width" : "900"
+	}
+}]]></configuration>
+														<customControlDataSets>
+															<customControlDataSet name="DS2" refQuery="Custom Control Data Set Query2">
+																<customControlCategories>
+																	<customControlCategoryDataItem refDataItem="Product line"/>
+																</customControlCategories>
+																<customControlFacts>
+																	<customControlFact refDataItem="Quantity"/>
+																</customControlFacts>
+															</customControlDataSet>
+														</customControlDataSets>
+														<XMLAttributes>
+															<XMLAttribute name="currentDataSet" value="DS2" output="no"/>
+														</XMLAttributes>
+													</customControl>
+												</contents>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:top"/>
+										</style>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Custom Control Data Set Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Product line" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+						<XMLAttribute name="RS_isCurrency" value="true" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+		<query name="Custom Control Data Set Query2">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Product line" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Quantity" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Quantity]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="1" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+	</queries>
+</report>

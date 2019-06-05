@@ -1,0 +1,54 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" useStyleVersion="10" expressionLocale="en-us">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding-top:32px;padding-left:32px"/>
+						</style>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<customControl height="300px" width="500px" path="/samples/javascript/LoadingText/LoadingText.js"/>
+												</contents>
+												<style>
+													<CSS value="border:1pt solid green"/>
+												</style>
+											</tableCell>
+										</tableCells>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+</report>

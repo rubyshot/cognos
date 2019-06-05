@@ -1,0 +1,564 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.3/" expressionLocale="en-us" useStyleVersion="11.4">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding:0px"/>
+						</style>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse;height:100%"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<block name="OptionsBlock">
+														<contents>
+															<block>
+																<contents>
+																	<table>
+																		<style>
+																			<defaultStyles>
+																				<defaultStyle refStyle="tb"/>
+																			</defaultStyles>
+																			<CSS value="border-collapse:collapse;width:100%"/>
+																		</style>
+																		<tableRows>
+																			<tableRow>
+																				<tableCells>
+																					<tableCell>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Options</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																						<style>
+																							<CSS value="padding-top:12px"/>
+																						</style>
+																					</tableCell>
+																					<tableCell>
+																						<contents>
+																							<promptButton type="next">
+																								<contents>
+																									<textItem>
+																										<dataSource>
+																											<staticValue>Apply</staticValue>
+																										</dataSource>
+																									</textItem>
+																								</contents>
+																								<style>
+																									<defaultStyles>
+																										<defaultStyle refStyle="bp"/>
+																									</defaultStyles>
+																								</style>
+																							</promptButton>
+																						</contents>
+																						<style>
+																							<CSS value="text-align:right"/>
+																						</style>
+																					</tableCell>
+																				</tableCells>
+																			</tableRow>
+																		</tableRows>
+																	</table>
+																</contents>
+																<style>
+																	<CSS value="font-family:Tahoma;font-size:14pt;color:white"/>
+																</style>
+															</block>
+															<block>
+																<contents>
+																	<block>
+																		<contents>
+																			<table>
+																				<style>
+																					<defaultStyles>
+																						<defaultStyle refStyle="tb"/>
+																					</defaultStyles>
+																					<CSS value="border-collapse:collapse"/>
+																				</style>
+																				<tableRows>
+																					<tableRow>
+																						<tableCells>
+																							<tableCell>
+																								<contents>
+																									<customControl description="Display Button" path="/samples/javascript/CollapsableRegion/C_DisplayButton.js" width="1em" height="1em">
+																										<configuration><![CDATA[{
+    "Control name": "PromptBlock1",
+    "Vertical": true,
+    "Hover foreground color": "#EAEAEA",
+    "Padding": "0px"
+}]]></configuration>
+																									</customControl>
+																								</contents>
+																								<style>
+																									<CSS value="width:0px;padding-right:4px;font-size:16px;color:#B1B6BA"/>
+																								</style>
+																							</tableCell>
+																							<tableCell>
+																								<contents>
+																									<textItem>
+																										<dataSource>
+																											<staticValue>Product Line</staticValue>
+																										</dataSource>
+																									</textItem>
+																								</contents>
+																							</tableCell>
+																						</tableCells>
+																					</tableRow>
+																				</tableRows>
+																			</table>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-bottom:4px;color:white;padding-top:24px"/>
+																		</style>
+																	</block>
+																	<block name="PromptBlock1">
+																		<contents>
+																			<selectValue hideAdornments="true" multiSelect="true" name="ListBox1" parameter="pl" refQuery="Query1" selectValueUI="listBox">
+																				<useItem refDataItem="Product line"/>
+																			</selectValue>
+																		</contents>
+																	</block>
+																</contents>
+															</block>
+															<block>
+																<contents>
+																	<block>
+																		<contents>
+																			<table>
+																				<style>
+																					<defaultStyles>
+																						<defaultStyle refStyle="tb"/>
+																					</defaultStyles>
+																					<CSS value="border-collapse:collapse"/>
+																				</style>
+																				<tableRows>
+																					<tableRow>
+																						<tableCells>
+																							<tableCell>
+																								<contents>
+																									<customControl description="Display Button" path="/samples/javascript/CollapsableRegion/C_DisplayButton.js" height="1em" width="1em">
+																										<configuration><![CDATA[{
+    "Control name": "PromptBlock2",
+    "Vertical": true,
+    "Hover foreground color": "#EAEAEA",
+    "Padding": "0px"
+}]]></configuration>
+																									</customControl>
+																								</contents>
+																								<style>
+																									<CSS value="width:0px;padding-right:4px;font-size:16px;color:#B1B6BA"/>
+																								</style>
+																							</tableCell>
+																							<tableCell>
+																								<contents>
+																									<textItem>
+																										<dataSource>
+																											<staticValue>Order Method</staticValue>
+																										</dataSource>
+																									</textItem>
+																								</contents>
+																							</tableCell>
+																						</tableCells>
+																					</tableRow>
+																				</tableRows>
+																			</table>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-top:24px;padding-bottom:4px;color:white"/>
+																		</style>
+																	</block>
+																	<block name="PromptBlock2">
+																		<contents>
+																			<selectValue hideAdornments="true" multiSelect="false" name="listBox2" parameter="om" refQuery="Query2" required="false" selectValueUI="dropdown">
+																				<useItem refDataItem="Order method type"/>
+																			</selectValue>
+																		</contents>
+																		<style>
+																			<CSS value="display:none-block"/>
+																		</style>
+																	</block>
+																</contents>
+															</block>
+															<block name="Block2">
+																<contents>
+																	<block>
+																		<contents>
+																			<table>
+																				<style>
+																					<defaultStyles>
+																						<defaultStyle refStyle="tb"/>
+																					</defaultStyles>
+																					<CSS value="border-collapse:collapse"/>
+																				</style>
+																				<tableRows>
+																					<tableRow>
+																						<tableCells>
+																							<tableCell>
+																								<contents>
+																									<customControl description="Display Button" path="/samples/javascript/CollapsableRegion/C_DisplayButton.js" height="1em" width="1em">
+																										<configuration><![CDATA[{
+    "Control name": "PromptBlock3",
+    "Vertical": true,
+    "Hover foreground color": "#EAEAEA",
+    "Padding": "0px"
+}]]></configuration>
+																									</customControl>
+																								</contents>
+																								<style>
+																									<CSS value="width:0px;padding-right:4px;font-size:16px;color:#B1B6BA"/>
+																								</style>
+																							</tableCell>
+																							<tableCell>
+																								<contents>
+																									<textItem>
+																										<dataSource>
+																											<staticValue>Date</staticValue>
+																										</dataSource>
+																									</textItem>
+																								</contents>
+																							</tableCell>
+																						</tableCells>
+																					</tableRow>
+																				</tableRows>
+																			</table>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-top:24px;padding-bottom:4px;color:white"/>
+																		</style>
+																	</block>
+																	<block name="PromptBlock3">
+																		<contents>
+																			<selectDate hideAdornments="true" name="Date1" parameter="Parameter1"/>
+																		</contents>
+																		<style>
+																			<CSS value="display:none-block"/>
+																		</style>
+																	</block>
+																</contents>
+															</block>
+														</contents>
+														<style>
+															<CSS value="padding-top:6px;padding-left:24px;height:100%;padding-right:24px;background-color:#6793CB;width:290px"/>
+														</style>
+													</block>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<customControl description="Display Button" path="/samples/javascript/CollapsableRegion/C_DisplayButton.js" width="30px">
+														<configuration><![CDATA[{
+    "Control name": "OptionsBlock",
+    "Vertical": false,
+    "Foreground color": "#B1B6BA",
+    "Hover foreground color": "#EAEAEA",
+    "Background color": "#EAEAEA",
+    "Hover background color": "#6793CB",
+    "Border color": "#B1B6BA",
+    "Hover border color": "#EAEAEA",
+    "Font size": "24px"
+}]]></configuration>
+													</customControl>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<list horizontalPagination="true" name="List1" refQuery="Query3">
+														<noDataHandler>
+															<contents>
+																<block>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<staticValue>No Data Available</staticValue>
+																			</dataSource>
+																			<style>
+																				<CSS value="padding:10px 18px;"/>
+																			</style>
+																		</textItem>
+																	</contents>
+																</block>
+															</contents>
+														</noDataHandler>
+														<style>
+															<CSS value="border-collapse:collapse"/>
+															<defaultStyles>
+																<defaultStyle refStyle="ls"/>
+															</defaultStyles>
+														</style>
+														<listColumns>
+															<listColumn>
+																<listColumnTitle>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lt"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemLabel refDataItem="Product line"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnTitle>
+																<listColumnBody>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lc"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemValue refDataItem="Product line"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																	<listColumnRowSpan refDataItem="Product line"/>
+																</listColumnBody>
+															</listColumn>
+															<listColumn>
+																<listColumnTitle>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lt"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemLabel refDataItem="Order method type"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnTitle>
+																<listColumnBody>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lc"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemValue refDataItem="Order method type"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																	<listColumnRowSpan refDataItem="Order method type"/>
+																</listColumnBody>
+															</listColumn>
+															<listColumn>
+																<listColumnTitle>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lt"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemLabel refDataItem="Retailer type"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnTitle>
+																<listColumnBody>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lc"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemValue refDataItem="Retailer type"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnBody>
+															</listColumn>
+															<listColumn>
+																<listColumnTitle>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lt"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemLabel refDataItem="Quantity"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnTitle>
+																<listColumnBody>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lm"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemValue refDataItem="Quantity"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnBody>
+															</listColumn>
+															<listColumn>
+																<listColumnTitle>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lt"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemLabel refDataItem="Revenue"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnTitle>
+																<listColumnBody>
+																	<style>
+																		<defaultStyles>
+																			<defaultStyle refStyle="lm"/>
+																		</defaultStyles>
+																	</style>
+																	<contents>
+																		<textItem>
+																			<dataSource>
+																				<dataItemValue refDataItem="Revenue"/>
+																			</dataSource>
+																		</textItem>
+																	</contents>
+																</listColumnBody>
+															</listColumn>
+														</listColumns>
+														<listGroups>
+															<listGroup refDataItem="Product line"/>
+															<listGroup refDataItem="Order method type"/>
+														</listGroups>
+													</list>
+												</contents>
+												<style>
+													<CSS value="padding-top:12px;padding-left:24px"/>
+												</style>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:top"/>
+										</style>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" output="no" value="true"/>
+		<XMLAttribute name="RS_modelModificationTime" output="no" value="2010-06-14T20:07:25.203Z"/>
+		<XMLAttribute name="listSeparator" output="no" value=","/>
+	</XMLAttributes>
+	<queries>
+		<query name="Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem aggregate="none" name="Product line">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+				</dataItem>
+			</selection>
+		</query>
+		<query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem aggregate="none" name="Order method type">
+					<expression>[Sales (query)].[Order method].[Order method type]</expression>
+				</dataItem>
+			</selection>
+		</query>
+		<query name="Query3">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem aggregate="none" name="Product line" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="3"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="attribute"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="none" name="Order method type" rollupAggregate="none">
+					<expression>[Sales (query)].[Order method].[Order method type]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="3"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="attribute"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="total" name="Quantity">
+					<expression>[Sales (query)].[Sales].[Quantity]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="1"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="fact"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="total" name="Revenue">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="2"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="fact"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="none" name="Retailer type" rollupAggregate="none">
+					<expression>[Sales (query)].[Retailer type].[Retailer type]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="3"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="attribute"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+			<detailFilters>
+				<detailFilter postAutoAggregation="false" use="optional">
+					<filterExpression>[Product line] in ?pl?</filterExpression>
+				</detailFilter>
+				<detailFilter postAutoAggregation="false" use="optional">
+					<filterExpression>[Order method type] in ?om?</filterExpression>
+				</detailFilter>
+			</detailFilters>
+		</query>
+	</queries>
+</report>

@@ -1,0 +1,88 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.3/"           expressionLocale="en-us" useStyleVersion="10"><!--RSU-SPC-0093 The report specification was upgraded from "http://developer.cognos.com/schemas/report/13.2/" to "http://developer.cognos.com/schemas/report/13.3/" at 2016-10-14. 15:58:43-->
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							
+							<customControl description="Rave2 Column Chart" height="500px" name="Column Chart" path="/samples/javascript/NewVisualizationSimple/NewVisualizationSimpleColumn.js" width="900px">
+								<configuration>{
+	"bundle" : "rave-library-column",
+	"properties" :
+	{
+		"height" : "500",
+		"width" : "900"
+	}
+}</configuration>
+								<customControlDataSets>
+									<customControlDataSet name="DS1" refQuery="Custom Control Data Set Query1">
+										<customControlCategories>
+											<customControlCategoryDataItem refDataItem="Product line"/>
+										</customControlCategories>
+										<customControlFacts>
+											<customControlFact refDataItem="Revenue"/>
+										</customControlFacts>
+									</customControlDataSet>
+								</customControlDataSets>
+								<XMLAttributes>
+									<XMLAttribute name="currentDataSet" output="no" value="DS1"/>
+								</XMLAttributes>
+							</customControl>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" output="no" value="true"/>
+		<XMLAttribute name="RS_modelModificationTime" output="no" value="2010-06-14T20:07:25.203Z"/>
+		<XMLAttribute name="listSeparator" output="no" value=","/>
+	</XMLAttributes>
+	<queries>
+		<query name="Custom Control Data Set Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem aggregate="none" name="Year" rollupAggregate="none">
+					<expression>[Sales (query)].[Time].[Year]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="1"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="attribute"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="none" name="Product line" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="3"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="attribute"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem aggregate="total" name="Revenue">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" output="no" value="2"/>
+						<XMLAttribute name="RS_dataUsage" output="no" value="fact"/>
+						<XMLAttribute name="RS_isCurrency" output="no" value="true"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+			
+		</query>
+		
+	</queries>
+</report>

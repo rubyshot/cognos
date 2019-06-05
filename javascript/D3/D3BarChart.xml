@@ -1,0 +1,146 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" useStyleVersion="10" expressionLocale="en-us">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<customControl description="D3 Chart" path="/samples/javascript/D3/D3BarChart.js">
+														<configuration><![CDATA[{
+    "Width": 400,
+    "Height": 48,
+    "Background color": "#4791DA"
+}]]></configuration>
+														<customControlDataSets>
+															<customControlDataSet refQuery="Custom Control Data Set Query1" name="Custom Control Data Set">
+																<customControlCategories>
+																	<customControlCategoryDataItem refDataItem="Product line"/>
+																</customControlCategories>
+																<customControlFacts>
+																	<customControlFact refDataItem="Revenue"/>
+																</customControlFacts>
+															</customControlDataSet>
+														</customControlDataSets>
+														<XMLAttributes>
+															<XMLAttribute name="currentDataSet" value="Custom Control Data Set" output="no"/>
+														</XMLAttributes>
+													</customControl>
+												</contents>
+												<style>
+													<CSS value="padding:32px"/>
+												</style>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<customControl description="D3 Chart" path="/samples/javascript/D3/D3BarChart.js">
+														<configuration><![CDATA[{
+    "Width": 400,
+    "Height": 48,
+    "Background color": "#50CB1C"
+}]]></configuration>
+														<customControlDataSets>
+															<customControlDataSet refQuery="Custom Control Data Set Query1" name="Custom Control Data Set1">
+																<customControlCategories>
+																	<customControlCategoryDataItem refDataItem="Product line"/>
+																</customControlCategories>
+																<customControlFacts>
+																	<customControlFact refDataItem="Quantity"/>
+																</customControlFacts>
+															</customControlDataSet>
+														</customControlDataSets>
+														<XMLAttributes>
+															<XMLAttribute name="currentDataSet" value="Custom Control Data Set1" output="no"/>
+														</XMLAttributes>
+													</customControl>
+												</contents>
+												<style>
+													<CSS value="padding:32px"/>
+												</style>
+											</tableCell>
+										</tableCells>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+					<pageHeader>
+						<contents>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>D3 Bar Chart</staticValue>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="font-size:16pt;font-weight:bold;padding-top:24px;padding-left:48px"/>
+								</style>
+							</block>
+						</contents>
+					</pageHeader>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Custom Control Data Set Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Product line" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+						<XMLAttribute name="RS_isCurrency" value="true" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Quantity" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Quantity]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="1" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+	</queries>
+</report>

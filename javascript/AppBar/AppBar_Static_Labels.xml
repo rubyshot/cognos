@@ -1,0 +1,497 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" useStyleVersion="10" expressionLocale="en-us">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding:32px 0px 0px 32px"/>
+						</style>
+						<contents>
+							<block name="card0">
+								<contents>
+									<list horizontalPagination="true" name="List1" refQuery="Query1" rowsPerPage="9999">
+										<noDataHandler>
+											<contents>
+												<block>
+													<contents>
+														<textItem>
+															<dataSource>
+																<staticValue>No Data Available</staticValue>
+															</dataSource>
+															<style>
+																<CSS value="padding:10px 18px;"/>
+															</style>
+														</textItem>
+													</contents>
+												</block>
+											</contents>
+										</noDataHandler>
+										<style>
+											<CSS value="border-collapse:collapse"/>
+											<defaultStyles>
+												<defaultStyle refStyle="ls"/>
+											</defaultStyles>
+										</style>
+										<listColumns>
+											<listColumn>
+												<listColumnTitle>
+													<style>
+														<defaultStyles>
+															<defaultStyle refStyle="lt"/>
+														</defaultStyles>
+													</style>
+													<contents>
+														<textItem>
+															<dataSource>
+																<dataItemLabel refDataItem="Retailer type"/>
+															</dataSource>
+														</textItem>
+													</contents>
+												</listColumnTitle>
+												<listColumnBody>
+													<style>
+														<defaultStyles>
+															<defaultStyle refStyle="lc"/>
+														</defaultStyles>
+													</style>
+													<contents>
+														<textItem>
+															<dataSource>
+																<dataItemValue refDataItem="Retailer type"/>
+															</dataSource>
+														</textItem>
+													</contents>
+												</listColumnBody>
+											</listColumn>
+											<listColumn>
+												<listColumnTitle>
+													<style>
+														<defaultStyles>
+															<defaultStyle refStyle="lt"/>
+														</defaultStyles>
+													</style>
+													<contents>
+														<textItem>
+															<dataSource>
+																<dataItemLabel refDataItem="Planned revenue"/>
+															</dataSource>
+														</textItem>
+													</contents>
+												</listColumnTitle>
+												<listColumnBody>
+													<style>
+														<defaultStyles>
+															<defaultStyle refStyle="lm"/>
+														</defaultStyles>
+													</style>
+													<contents>
+														<textItem>
+															<dataSource>
+																<dataItemValue refDataItem="Planned revenue"/>
+															</dataSource>
+														</textItem>
+													</contents>
+												</listColumnBody>
+											</listColumn>
+										</listColumns>
+									</list>
+								</contents>
+								<style>
+									<CSS value="display:none-block"/>
+								</style>
+							</block>
+							<block name="card1">
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<viz type="az.Pie" name="Pie" outputType="static">
+																<XMLAttributes>
+																	<XMLAttribute name="supportsDefaultDataFormatting" value="true" output="no"/>
+																	<XMLAttribute name="ETag" value="version=1" output="no"/>
+																</XMLAttributes>
+																<vizPropertyValues>
+																	<vizPropertyIntegerValue name="width">500</vizPropertyIntegerValue>
+																	<vizPropertyIntegerValue name="height">500</vizPropertyIntegerValue>
+																</vizPropertyValues>
+																<vizDataSets>
+																	<vizDataSet idDataSet="dataSet" name="Pie: Data" refQuery="Query2">
+																		<vizCategories>
+																			<vizCategoryEdge refEdge="seriesEdge">
+																				<vizCategoryLevels>
+																					<vizCategoryLevel>
+																						<vizCategoryField idField="categories" valueRange="all">
+																							<vizCategoryDataItems>
+																								<vizCategoryDataItem refDataItem="Year"/>
+																							</vizCategoryDataItems>
+																						</vizCategoryField>
+																					</vizCategoryLevel>
+																				</vizCategoryLevels>
+																			</vizCategoryEdge>
+																		</vizCategories>
+																		<vizValues>
+																			<vizValue idField="size" refDataItem="Planned revenue" rollupMethod="total">
+																				<vizValueRange>
+																					<vizValueRangeComputed rangeData="all"/>
+																				</vizValueRange>
+																			</vizValue>
+																		</vizValues>
+																	</vizDataSet>
+																</vizDataSets>
+															</viz>
+														</contents>
+													</tableCell>
+													<tableCell>
+														<contents>
+															<viz type="az.Column" name="Column" outputType="static">
+																<XMLAttributes>
+																	<XMLAttribute name="supportsDefaultDataFormatting" value="true" output="no"/>
+																	<XMLAttribute name="ETag" value="version=1" output="no"/>
+																</XMLAttributes>
+																<vizPropertyValues>
+																	<vizPropertyIntegerValue name="width">500</vizPropertyIntegerValue>
+																	<vizPropertyIntegerValue name="height">500</vizPropertyIntegerValue>
+																</vizPropertyValues>
+																<vizDataSets>
+																	<vizDataSet idDataSet="dataSet" name="Column: Data" refQuery="Query2">
+																		<vizCategories>
+																			<vizCategoryEdge refEdge="categoriesEdge">
+																				<vizCategoryLevels>
+																					<vizCategoryLevel>
+																						<vizCategoryField idField="categories" valueRange="all">
+																							<vizCategoryDataItems>
+																								<vizCategoryDataItem refDataItem="Revenue"/>
+																							</vizCategoryDataItems>
+																						</vizCategoryField>
+																					</vizCategoryLevel>
+																				</vizCategoryLevels>
+																			</vizCategoryEdge>
+																			<vizCategoryEdge refEdge="seriesEdge">
+																				<vizCategoryLevels>
+																					<vizCategoryLevel>
+																						<vizCategoryField idField="series" valueRange="all">
+																							<vizCategoryDataItems>
+																								<vizCategoryDataItem refDataItem="Year"/>
+																							</vizCategoryDataItems>
+																						</vizCategoryField>
+																					</vizCategoryLevel>
+																				</vizCategoryLevels>
+																			</vizCategoryEdge>
+																		</vizCategories>
+																		<vizValues>
+																			<vizValue idField="size" refDataItem="Default Value" rollupMethod="total">
+																				<vizValueRange>
+																					<vizValueRangeComputed rangeData="all"/>
+																				</vizValueRange>
+																			</vizValue>
+																		</vizValues>
+																	</vizDataSet>
+																</vizDataSets>
+															</viz>
+														</contents>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="display:none-block"/>
+								</style>
+							</block>
+							<block name="card2">
+								<contents>
+									<crosstab horizontalPagination="true" name="Crosstab1" refQuery="Query2" rowsPerPage="9999">
+										<crosstabCorner>
+											<contents/>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="xm"/>
+												</defaultStyles>
+											</style>
+										</crosstabCorner>
+										<noDataHandler>
+											<contents>
+												<block>
+													<contents>
+														<textItem>
+															<dataSource>
+																<staticValue>No Data Available</staticValue>
+															</dataSource>
+															<style>
+																<CSS value="padding:10px 18px;"/>
+															</style>
+														</textItem>
+													</contents>
+												</block>
+											</contents>
+										</noDataHandler>
+										<style>
+											<CSS value="border-collapse:collapse"/>
+											<defaultStyles>
+												<defaultStyle refStyle="xt"/>
+											</defaultStyles>
+										</style>
+										<crosstabFactCell>
+											<contents>
+												<textItem>
+													<dataSource>
+														<cellValue/>
+													</dataSource>
+												</textItem>
+											</contents>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="mv"/>
+												</defaultStyles>
+											</style>
+										</crosstabFactCell>
+										<crosstabColumns>
+											<crosstabNode>
+												<crosstabNodeMembers>
+													<crosstabNodeMember refDataItem="Planned revenue" edgeLocation="e2">
+														<style>
+															<defaultStyles>
+																<defaultStyle refStyle="ml"/>
+															</defaultStyles>
+														</style>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<memberCaption/>
+																</dataSource>
+															</textItem>
+														</contents>
+													</crosstabNodeMember>
+												</crosstabNodeMembers>
+											</crosstabNode>
+											<crosstabNode>
+												<crosstabNodeMembers>
+													<crosstabNodeMember refDataItem="Revenue" edgeLocation="e4">
+														<style>
+															<defaultStyles>
+																<defaultStyle refStyle="ml"/>
+															</defaultStyles>
+														</style>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<memberCaption/>
+																</dataSource>
+															</textItem>
+														</contents>
+													</crosstabNodeMember>
+												</crosstabNodeMembers>
+											</crosstabNode>
+											<crosstabNode>
+												<crosstabNodeMembers>
+													<crosstabNodeMember refDataItem="Quantity" edgeLocation="e5">
+														<style>
+															<defaultStyles>
+																<defaultStyle refStyle="ml"/>
+															</defaultStyles>
+														</style>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<memberCaption/>
+																</dataSource>
+															</textItem>
+														</contents>
+													</crosstabNodeMember>
+												</crosstabNodeMembers>
+											</crosstabNode>
+										</crosstabColumns>
+										<crosstabRows>
+											<crosstabNode>
+												<crosstabNestedNodes>
+													<crosstabNode>
+														<crosstabNodeMembers>
+															<crosstabNodeMember refDataItem="Quarter" edgeLocation="e3">
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="ml"/>
+																	</defaultStyles>
+																</style>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<memberCaption/>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<sortList>
+																	<sortItem refDataItem="Quarter" sortOrder="ascending"/>
+																</sortList>
+															</crosstabNodeMember>
+														</crosstabNodeMembers>
+													</crosstabNode>
+												</crosstabNestedNodes>
+												<crosstabNodeMembers>
+													<crosstabNodeMember refDataItem="Year" edgeLocation="e1">
+														<style>
+															<defaultStyles>
+																<defaultStyle refStyle="ml"/>
+															</defaultStyles>
+														</style>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<memberCaption/>
+																</dataSource>
+															</textItem>
+														</contents>
+														<sortList>
+															<sortItem refDataItem="Year" sortOrder="ascending"/>
+														</sortList>
+													</crosstabNodeMember>
+												</crosstabNodeMembers>
+											</crosstabNode>
+										</crosstabRows>
+									</crosstab>
+								</contents>
+								<style>
+									<CSS value="display:none-block"/>
+								</style>
+							</block>
+						</contents>
+					</pageBody>
+					<pageHeader>
+						<contents>
+							<block>
+								<contents>
+									<customControl path="/samples/javascript/AppBar/AppBar.js" description="AppBar">
+										<configuration><![CDATA[{
+    "Orientation": "horizontal",
+    "Align": "center",
+    "Background color": "black",
+    "Fill": "#F0F0F0",
+    "Selection fill": "#F0F0F0",
+    "Selection border color": "yellow",
+    "Selection background color": "black",
+    "Buttons": [
+        {
+            "selected": true,
+            "card": "card0",
+            "label": "Card 1"
+        },
+        {
+            "card": "card1",
+            "label": "Card 2"
+        },
+        {
+            "card": "card2",
+            "label": "Card 3"
+        }
+    ]
+}]]></configuration>
+									</customControl>
+								</contents>
+								<style>
+									<CSS value="font-size:26pt;background-color:black;padding-top:16px;padding-bottom:16px"/>
+								</style>
+							</block>
+						</contents>
+					</pageHeader>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Retailer type" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Retailer type].[Retailer type]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Planned revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Planned revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+		<query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Year" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Time].[Year]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="1" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Planned revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Planned revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Quarter" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Time].[Quarter]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Quantity" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Quantity]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="1" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Default Value" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+		</query>
+	</queries>
+</report>

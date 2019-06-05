@@ -1,0 +1,175 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/"           expressionLocale="en-us" useStyleVersion="11.4">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							
+						<table><style><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles><CSS value="border-collapse:collapse"/></style><tableRows><tableRow><tableCells><tableCell><contents><block>
+			<contents><customControl path="/samples/javascript/Bootstrap/bs-tabs.js" description="Bootstrap static tabs">
+														
+														
+														
+													<configuration><![CDATA[{
+    "Tabs": []
+}]]></configuration></customControl></contents>
+		<style><CSS value="padding:12px;display:none-block"/></style></block></contents></tableCell><tableCell><contents><block>
+			<contents><HTMLItem description="ToggleButtonBar">
+			<dataSource>
+				<staticValue>&lt;div class="btn-group" data-toggle="buttons"&gt;
+  &lt;label class="btn btn-primary active"&gt;
+    &lt;input type="checkbox" autocomplete="off" checked="true"/&gt; Checkbox 1
+  &lt;/label&gt;
+  &lt;label class="btn btn-primary"&gt;
+    &lt;input type="checkbox" autocomplete="off"/&gt; Checkbox 2
+  &lt;/label&gt;
+  &lt;label class="btn btn-primary"&gt;
+    &lt;input type="checkbox" autocomplete="off"/&gt; Checkbox 3
+  &lt;/label&gt;
+&lt;/div&gt;</staticValue>
+			</dataSource>
+		</HTMLItem></contents>
+		<style><CSS value="padding:12px"/></style></block></contents></tableCell></tableCells></tableRow></tableRows></table><block>
+			<contents><HTMLItem description="Buttons">
+			<dataSource>
+				<staticValue>&lt;!-- Standard button --&gt;
+&lt;button type="button" class="btn btn-default"&gt;Default&lt;/button&gt;
+
+&lt;!-- Provides extra visual weight and identifies the primary action in a set of buttons --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+
+  &lt;button type="button" class="btn btn-primary btn-lg"&gt;Large button&lt;/button&gt;
+  &lt;button type="button" class="btn btn-default btn-lg"&gt;Large button&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left"&gt;Tooltip on left&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top"&gt;Tooltip on top&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"&gt;Tooltip on bottom&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right"&gt;Tooltip on right&lt;/button&gt;
+</staticValue>
+			</dataSource>
+		</HTMLItem></contents>
+		<style><CSS value="padding:12px"/></style></block><block>
+			<contents><HTMLItem description="Popovers">
+			<dataSource>
+				<staticValue>&lt;button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;
+  Popover on left
+&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;
+  Popover on top
+&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus."&gt;
+  Popover on bottom
+&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."&gt;
+  Popover on right
+&lt;/button&gt;
+
+&lt;a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?"&gt;Dismissible popover&lt;/a&gt;
+</staticValue>
+			</dataSource>
+		</HTMLItem></contents>
+		<style><CSS value="padding:12px"/></style></block><block>
+			<contents><HTMLItem>
+			<dataSource>
+				<staticValue>&lt;!-- Large modal --&gt;
+&lt;button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"&gt;Large modal&lt;/button&gt;
+
+&lt;div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"&gt;
+  &lt;div class="modal-dialog modal-lg" role="document"&gt;
+    &lt;div class="modal-content"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Small modal --&gt;
+&lt;button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm"&gt;Small modal&lt;/button&gt;
+
+&lt;div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"&gt;
+  &lt;div class="modal-dialog modal-sm" role="document"&gt;
+    &lt;div class="modal-content"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</staticValue>
+			</dataSource>
+		</HTMLItem></contents>
+		<style><CSS value="padding:12px"/></style></block></contents>
+					</pageBody>
+					<pageHeader>
+						<contents>
+							
+						<HTMLItem description="Bootstrap CSS">
+			<dataSource>
+				<staticValue>&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/&gt;
+</staticValue>
+			</dataSource>
+		</HTMLItem><HTMLItem description="navbar">
+			<dataSource>
+				<staticValue>&lt;nav class="navbar navbar-inverse"&gt;
+	&lt;div class="container-fluid"&gt;
+		&lt;div class="navbar-header"&gt;
+			&lt;a class="navbar-brand" href="#"&gt;WebSiteName&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;ul class="nav navbar-nav"&gt;
+			&lt;li class="active"&gt;
+				&lt;a href="#"&gt;Home&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li class="dropdown"&gt;
+				&lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Page 1 &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+				&lt;ul class="dropdown-menu"&gt;
+					&lt;li&gt;
+						&lt;a href="#"&gt;Page 1-1&lt;/a&gt;
+					&lt;/li&gt;
+					&lt;li&gt;
+						&lt;a href="#"&gt;Page 1-2&lt;/a&gt;
+					&lt;/li&gt;
+					&lt;li&gt;
+						&lt;a href="#"&gt;Page 1-3&lt;/a&gt;
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;a href="#"&gt;Page 2&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;a href="#"&gt;Page 3&lt;/a&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/nav&gt;
+</staticValue>
+			</dataSource>
+		</HTMLItem></contents>
+					</pageHeader>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	
+</report>

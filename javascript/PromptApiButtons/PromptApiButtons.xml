@@ -1,0 +1,265 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" expressionLocale="en-us" useStyleVersion="11.4">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding:0px"/>
+						</style>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse;height:100%"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<block name="Block1">
+														<contents>
+															<block>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<staticValue>Options</staticValue>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<style>
+																	<CSS value="font-family:Tahoma;font-size:14pt;color:white"/>
+																</style>
+															</block>
+															<block>
+																<contents>
+																	<block>
+																		<contents>
+																			<textItem>
+																				<dataSource>
+																					<staticValue>Product Line:</staticValue>
+																				</dataSource>
+																			</textItem>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-top:24px;padding-bottom:2px;color:white"/>
+																		</style>
+																	</block>
+																	<selectValue parameter="Parameter1" selectValueUI="listBox" name="ListBox1" refQuery="Query1" multiSelect="true" hideAdornments="true">
+																		<useItem refDataItem="Product line"/>
+																	</selectValue>
+																</contents>
+															</block>
+															<block>
+																<contents>
+																	<block>
+																		<contents>
+																			<textItem>
+																				<dataSource>
+																					<staticValue>Order Method:</staticValue>
+																				</dataSource>
+																			</textItem>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-top:24px;padding-bottom:2px;color:white"/>
+																		</style>
+																	</block>
+																	<selectValue parameter="Parameter1" refQuery="Query2" multiSelect="false" selectValueUI="dropdown" required="false" name="listBox2" hideAdornments="true">
+																		<useItem refDataItem="Order method type"/>
+																	</selectValue>
+																</contents>
+															</block>
+															<block name="Block2">
+																<contents>
+																	<block>
+																		<contents>
+																			<textItem>
+																				<dataSource>
+																					<staticValue>Date:</staticValue>
+																				</dataSource>
+																			</textItem>
+																		</contents>
+																		<style>
+																			<CSS value="font-weight:bold;padding-top:24px;padding-bottom:2px;color:white"/>
+																		</style>
+																	</block>
+																	<selectDate parameter="Parameter1" name="Date1" hideAdornments="true"/>
+																</contents>
+															</block>
+														</contents>
+														<style>
+															<CSS value="padding-top:12px;padding-left:24px;height:100%;padding-right:24px;background-color:#6793CB"/>
+														</style>
+													</block>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<customControl description="Display Button" path="/samples/javascript/CollapsableRegion/C_DisplayButton.js"/>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<block>
+														<contents>
+															<block>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<staticValue>Parameter Values:</staticValue>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<style>
+																	<CSS value="font-weight:bold;padding-bottom:2px"/>
+																</style>
+															</block>
+															<block>
+																<contents>
+																	<block>
+																		<contents>
+																			<textItem name="txtParameterVales">
+																				<dataSource>
+																					<staticValue>Parameter values from calls to getValues are displayed here.</staticValue>
+																				</dataSource>
+																				<style>
+																					<CSS value="color:silver"/>
+																				</style>
+																			</textItem>
+																		</contents>
+																	</block>
+																</contents>
+																<style>
+																	<CSS value="padding:4px;background-color:#FFFFCC;font-family:Consolas;font-size:12pt;height:120px;width:750px"/>
+																</style>
+															</block>
+														</contents>
+													</block>
+													<block>
+														<contents>
+															<block>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<staticValue>Product Line:</staticValue>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<style>
+																	<CSS value="font-weight:bold;padding-top:8px;padding-bottom:2px"/>
+																</style>
+															</block>
+															<customControl description="Product Line Buttons" path="/samples/javascript/PromptApiButtons/C_PromptApiButtons.js">
+																<configuration><![CDATA[{
+	"name" : "ListBox1"
+}]]></configuration>
+															</customControl>
+														</contents>
+													</block>
+													<block>
+														<contents>
+															<block>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<staticValue>Order Method:</staticValue>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<style>
+																	<CSS value="font-weight:bold;padding-top:24px;padding-bottom:2px"/>
+																</style>
+															</block>
+															<customControl description="Order Method Buttons" path="/samples/javascript/PromptApiButtons/C_PromptApiButtons.js">
+																<configuration><![CDATA[{
+	"name" : "listBox2"
+}]]></configuration>
+															</customControl>
+														</contents>
+														<style>
+															<CSS value="padding-top:60px"/>
+														</style>
+													</block>
+													<block>
+														<contents>
+															<block>
+																<contents>
+																	<textItem>
+																		<dataSource>
+																			<staticValue>Date:</staticValue>
+																		</dataSource>
+																	</textItem>
+																</contents>
+																<style>
+																	<CSS value="font-weight:bold;padding-top:24px;padding-bottom:2px"/>
+																</style>
+															</block>
+															<customControl description="Date Buttons" path="/samples/javascript/PromptApiButtons/C_PromptApiButtons.js">
+																<configuration><![CDATA[{
+	"name" : "Date1"
+}]]></configuration>
+															</customControl>
+														</contents>
+														<style>
+															<CSS value="padding-top:60px"/>
+														</style>
+													</block>
+												</contents>
+												<style>
+													<CSS value="padding-top:12px;padding-left:24px"/>
+												</style>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:top"/>
+										</style>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<queries>
+		<query name="Query1">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Product line" aggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+				</dataItem>
+			</selection>
+		</query>
+		<query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Order method type" aggregate="none">
+					<expression>[Sales (query)].[Order method].[Order method type]</expression>
+				</dataItem>
+			</selection>
+		</query>
+	</queries>
+</report>

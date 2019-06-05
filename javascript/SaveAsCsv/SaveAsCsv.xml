@@ -1,0 +1,29 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/"           useStyleVersion="10" expressionLocale="en-us">
+				<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+				<drillBehavior modelBasedDrillThru="true"/>
+				<layouts>
+					<layout>
+						<reportPages>
+							<page name="Page1">
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="pg"/>
+									</defaultStyles>
+								</style>
+								<pageBody>
+									<style>
+										<defaultStyles>
+											<defaultStyle refStyle="pb"/>
+										</defaultStyles>
+									</style>
+									<contents><customControl uiType="none" name="MyData1"><customControlDataSets><customControlDataSet refQuery="Data set query1" name="Data set1"><customControlCategories><customControlCategoryDataItem refDataItem="Year"/><customControlCategoryDataItem refDataItem="Product line"/><customControlCategoryDataItem refDataItem="Product type"/><customControlCategoryDataItem refDataItem="Product"/></customControlCategories><customControlFacts><customControlFact refDataItem="Revenue"/></customControlFacts></customControlDataSet></customControlDataSets><XMLAttributes><XMLAttribute name="currentDataSet" value="Data set1" output="no"/></XMLAttributes></customControl><customControl path="/samples/javascript/SaveAsCsv/SaveAsCsv.js" description="Save CSV"><configuration><![CDATA[{
+    "Control name": "MyData1",
+    "Data store name": "",
+    "File name": "MyData.csv"
+}]]></configuration></customControl></contents>
+								</pageBody>
+							</page>
+						</reportPages>
+					</layout>
+				</layouts>
+			<XMLAttributes><XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/><XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/><XMLAttribute name="listSeparator" value="," output="no"/></XMLAttributes><queries><query name="Data set query1"><source><model/></source><selection><dataItem name="Product line" aggregate="none" rollupAggregate="none"><expression>[Sales (query)].[Products].[Product line]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="attribute" output="no"/></XMLAttributes></dataItem><dataItem name="Product type" aggregate="none" rollupAggregate="none"><expression>[Sales (query)].[Products].[Product type]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="attribute" output="no"/></XMLAttributes></dataItem><dataItem name="Product" aggregate="none" rollupAggregate="none"><expression>[Sales (query)].[Products].[Product]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="attribute" output="no"/></XMLAttributes></dataItem><dataItem name="Year" aggregate="none" rollupAggregate="none"><expression>[Sales (query)].[Time].[Year]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="1" output="no"/><XMLAttribute name="RS_dataUsage" value="attribute" output="no"/></XMLAttributes></dataItem><dataItem name="Revenue" aggregate="total"><expression>[Sales (query)].[Sales].[Revenue]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="2" output="no"/><XMLAttribute name="RS_dataUsage" value="fact" output="no"/><XMLAttribute name="RS_isCurrency" value="true" output="no"/></XMLAttributes></dataItem></selection></query></queries></report>

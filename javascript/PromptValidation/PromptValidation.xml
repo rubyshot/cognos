@@ -1,0 +1,657 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" expressionLocale="en-us" useStyleVersion="11.4">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Phone number: </staticValue>
+										</dataSource>
+									</textItem>
+									<textItem>
+										<dataSource>
+											<reportExpression>ParamDisplayValue('pPhoneNumber')</reportExpression>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding:12px;font-size:18pt"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Postal code: </staticValue>
+										</dataSource>
+									</textItem>
+									<textItem>
+										<dataSource>
+											<reportExpression>ParamDisplayValue('pPostalCode')</reportExpression>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding:12px;font-size:18pt"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Zip code: </staticValue>
+										</dataSource>
+									</textItem>
+									<textItem>
+										<dataSource>
+											<reportExpression>ParamDisplayValue('pZipCode')</reportExpression>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding:12px;font-size:18pt"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Email: </staticValue>
+										</dataSource>
+									</textItem>
+									<textItem>
+										<dataSource>
+											<reportExpression>ParamDisplayValue('pEmail')</reportExpression>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding:12px;font-size:18pt"/>
+								</style>
+							</block>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+			<promptPages>
+				<page name="Prompt page1">
+					<pageBody>
+						<contents>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<table>
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="tb"/>
+																	</defaultStyles>
+																	<CSS value="border-collapse:collapse"/>
+																</style>
+																<tableRows>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Enter a valid telephone number:</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textBox parameter="pPhoneNumber" name="txtPhoneNumber">
+																						<style>
+																							<CSS value="width:200px"/>
+																						</style>
+																					</textBox>
+																				</contents>
+																				<style>
+																					<CSS value="padding-top:4px;padding-bottom:4px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>(123) 456-7890</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																</tableRows>
+															</table>
+														</contents>
+														<style>
+															<CSS value="padding:12px 24px 12px 12px"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="padding:16px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<table>
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="tb"/>
+																	</defaultStyles>
+																	<CSS value="border-collapse:collapse"/>
+																</style>
+																<tableRows>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Enter a valid postal code:</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textBox parameter="pPostalCode" name="txtPostalCode"/>
+																				</contents>
+																				<style>
+																					<CSS value="padding-top:4px;padding-bottom:4px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textItem>
+																						<dataSource>
+																							<staticValue>A1A 1A1</staticValue>
+																						</dataSource>
+																						<style>
+																							<CSS value="color:gray"/>
+																						</style>
+																					</textItem>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																</tableRows>
+															</table>
+														</contents>
+														<style>
+															<CSS value="padding:12px 24px 12px 12px"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="padding:16px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<table>
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="tb"/>
+																	</defaultStyles>
+																	<CSS value="border-collapse:collapse"/>
+																</style>
+																<tableRows>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Enter a valid zip code:</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textBox parameter="pZipCode" name="txtZipCode"/>
+																				</contents>
+																				<style>
+																					<CSS value="padding-top:4px;padding-bottom:4px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>12345</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>12345-6789</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>12345 6789</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																</tableRows>
+															</table>
+														</contents>
+														<style>
+															<CSS value="padding:12px 24px 12px 12px"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="padding:16px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<table>
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="tb"/>
+																	</defaultStyles>
+																	<CSS value="border-collapse:collapse"/>
+																</style>
+																<tableRows>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Enter a email address:</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textBox parameter="pEmail" name="txtEmail">
+																						<style>
+																							<CSS value="width:240px"/>
+																						</style>
+																					</textBox>
+																				</contents>
+																				<style>
+																					<CSS value="padding-top:4px;padding-bottom:4px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>something@something.something</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																</tableRows>
+															</table>
+														</contents>
+														<style>
+															<CSS value="padding:12px 24px 12px 12px"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="padding:16px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<customControl path="/samples/javascript/PromptValidation/PromptControlRegexValidator.js" description="Regex Validator Control" uiType="none">
+																<configuration><![CDATA[{
+    "Regular expression": "/^[a-z][0-9]$/i",
+    "Control names": [
+        "txtRegex"
+    ]
+}]]></configuration>
+															</customControl>
+															<table>
+																<style>
+																	<defaultStyles>
+																		<defaultStyle refStyle="tb"/>
+																	</defaultStyles>
+																	<CSS value="border-collapse:collapse"/>
+																</style>
+																<tableRows>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>Enter 1 letter and 1 digit:</staticValue>
+																								</dataSource>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<textBox parameter="pRegex" name="txtRegex"/>
+																				</contents>
+																				<style>
+																					<CSS value="padding-top:4px;padding-bottom:4px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																	<tableRow>
+																		<tableCells>
+																			<tableCell>
+																				<contents>
+																					<block>
+																						<contents>
+																							<textItem>
+																								<dataSource>
+																									<staticValue>a1</staticValue>
+																								</dataSource>
+																								<style>
+																									<CSS value="color:gray"/>
+																								</style>
+																							</textItem>
+																						</contents>
+																					</block>
+																				</contents>
+																				<style>
+																					<CSS value="padding-left:18px"/>
+																				</style>
+																			</tableCell>
+																		</tableCells>
+																	</tableRow>
+																</tableRows>
+															</table>
+														</contents>
+														<style>
+															<CSS value="padding:12px 24px 12px 12px"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+								<style>
+									<CSS value="padding:16px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<promptButton type="finish">
+										<contents>
+											<textItem>
+												<dataSource>
+													<staticValue>OK</staticValue>
+												</dataSource>
+											</textItem>
+										</contents>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="bp"/>
+											</defaultStyles>
+											<CSS value="width:80px;font-size:12pt"/>
+										</style>
+									</promptButton>
+								</contents>
+								<style>
+									<CSS value="padding-top:32px;padding-left:32px"/>
+								</style>
+							</block>
+						</contents>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="py"/>
+							</defaultStyles>
+						</style>
+					</pageBody>
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pp"/>
+						</defaultStyles>
+					</style>
+					<pageModule path="/samples/javascript/PromptValidation/ValidationPageModule.js"/>
+					<pageHeader>
+						<contents>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Prompt setValidator Tests</staticValue>
+										</dataSource>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="font-size:14pt;font-weight:bold;padding-top:24px;padding-bottom:4px;padding-left:32px"/>
+								</style>
+							</block>
+						</contents>
+					</pageHeader>
+				</page>
+			</promptPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+</report>

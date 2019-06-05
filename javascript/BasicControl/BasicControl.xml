@@ -1,0 +1,100 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" expressionLocale="en-us" useStyleVersion="11">
+	<modelPath/>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+						<CSS value="font-family:Consolas;font-size:12pt"/>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+						</style>
+						<contents>
+							<customControl description="BasicControl" path="/samples/javascript/BasicControl/BasicControl.js"/>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>Source:</staticValue>
+										</dataSource>
+										<style>
+											<CSS value="font-weight:bold"/>
+										</style>
+									</textItem>
+								</contents>
+								<style>
+									<CSS value="padding-top:24px"/>
+								</style>
+							</block>
+							<block>
+								<contents>
+									<table>
+										<style>
+											<defaultStyles>
+												<defaultStyle refStyle="tb"/>
+											</defaultStyles>
+											<CSS value="border-collapse:collapse;border:1pt solid silver"/>
+										</style>
+										<tableRows>
+											<tableRow>
+												<tableCells>
+													<tableCell>
+														<contents>
+															<HTMLItem description="pre">
+																<dataSource>
+																	<staticValue>&lt;pre&gt;</staticValue>
+																</dataSource>
+															</HTMLItem>
+															<HTMLItem description="Source">
+																<dataSource>
+																	<staticValue>define( function() {
+
+function BasicControl()
+{
+};
+
+BasicControl.prototype.draw = function( oControlHost )
+{
+	oControlHost.container.innerHTML = "Hello";
+};
+
+return BasicControl;
+});
+</staticValue>
+																</dataSource>
+															</HTMLItem>
+															<HTMLItem description="/pre">
+																<dataSource>
+																	<staticValue>&lt;/pre&gt;</staticValue>
+																</dataSource>
+															</HTMLItem>
+														</contents>
+														<style>
+															<CSS value="padding:8px 16px 8px 16px;background-color:#DFDFDF"/>
+														</style>
+													</tableCell>
+												</tableCells>
+											</tableRow>
+										</tableRows>
+									</table>
+								</contents>
+							</block>
+						</contents>
+					</pageBody>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="" output="no"/>
+	</XMLAttributes>
+</report>

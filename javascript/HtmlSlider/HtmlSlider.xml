@@ -1,0 +1,388 @@
+<report xmlns="http://developer.cognos.com/schemas/report/13.2/" expressionLocale="en-us" useStyleVersion="11">
+	<modelPath type="FM">/content/folder[@name=&apos;Samples&apos;]/folder[@name=&apos;Models&apos;]/package[@name=&apos;GO sales (query)&apos;]/model[@name=&apos;model&apos;]</modelPath>
+	<drillBehavior modelBasedDrillThru="true"/>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<style>
+						<defaultStyles>
+							<defaultStyle refStyle="pg"/>
+						</defaultStyles>
+					</style>
+					<pageBody>
+						<style>
+							<defaultStyles>
+								<defaultStyle refStyle="pb"/>
+							</defaultStyles>
+							<CSS value="padding-left:48px"/>
+						</style>
+						<contents>
+							<list horizontalPagination="true" name="List1" refQuery="ListQuery">
+								<noDataHandler>
+									<contents>
+										<block>
+											<contents>
+												<textItem>
+													<dataSource>
+														<staticValue>No Data Available</staticValue>
+													</dataSource>
+													<style>
+														<CSS value="padding:10px 18px;"/>
+													</style>
+												</textItem>
+											</contents>
+										</block>
+									</contents>
+								</noDataHandler>
+								<style>
+									<CSS value="border-collapse:collapse;color:#323232"/>
+									<defaultStyles>
+										<defaultStyle refStyle="ls"/>
+									</defaultStyles>
+								</style>
+								<listColumns>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+												<CSS value="width:160px"/>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Product line"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Product line"/>
+													</dataSource>
+												</textItem>
+											</contents>
+											<listColumnRowSpan refDataItem="Product line"/>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+												<CSS value="width:130px"/>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Product type"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lc"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Product type"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+									<listColumn>
+										<listColumnTitle>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lt"/>
+												</defaultStyles>
+												<CSS value="width:120px"/>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemLabel refDataItem="Revenue"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnTitle>
+										<listColumnBody>
+											<style>
+												<defaultStyles>
+													<defaultStyle refStyle="lm"/>
+												</defaultStyles>
+											</style>
+											<contents>
+												<textItem>
+													<dataSource>
+														<dataItemValue refDataItem="Revenue"/>
+													</dataSource>
+												</textItem>
+											</contents>
+										</listColumnBody>
+									</listColumn>
+								</listColumns>
+								<listColumnBodyStyle>
+									<style>
+										<CSS value="white-space:nowrap"/>
+									</style>
+								</listColumnBodyStyle>
+								<listColumnTitleStyle>
+									<style>
+										<CSS value="white-space:nowrap"/>
+									</style>
+								</listColumnTitleStyle>
+								<listGroups>
+									<listGroup refDataItem="Product line"/>
+								</listGroups>
+							</list>
+						</contents>
+					</pageBody>
+					<pageHeader>
+						<contents>
+							<table>
+								<style>
+									<defaultStyles>
+										<defaultStyle refStyle="tb"/>
+									</defaultStyles>
+									<CSS value="border-collapse:collapse;color:#323232;font-size:12pt"/>
+								</style>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents/>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<staticValue>Product type revenues:</staticValue>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="text-align:center;padding-bottom:12px"/>
+												</style>
+											</tableCell>
+											<tableCell>
+												<contents/>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:bottom"/>
+										</style>
+									</tableRow>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<singleton name="Singleton1" refQuery="RangeQuery">
+														<contents>
+															<textItem>
+																<dataSource>
+																	<dataItemValue refDataItem="min"/>
+																</dataSource>
+																<style>
+																	<dataFormat>
+																		<currencyFormat decimalSize="0"/>
+																	</dataFormat>
+																</style>
+															</textItem>
+														</contents>
+													</singleton>
+													<block>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<staticValue>Min</staticValue>
+																</dataSource>
+															</textItem>
+														</contents>
+														<style>
+															<CSS value="text-align:center;font-size:12pt;font-weight:bold;color:#4178BE"/>
+														</style>
+													</block>
+												</contents>
+												<style>
+													<CSS value="padding-right:12px"/>
+												</style>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<customControl path="/samples/javascript/HtmlSlider/C_HtmlSlider.js" description="HTML Slider" height="51px" width="300px">
+														<configuration><![CDATA[{
+    "Parameter": "pMin",
+    "Range type": "max",
+    "Value text item": ""
+}]]></configuration>
+														<customControlDataSets>
+															<customControlDataSet name="Range Data Set" refQuery="RangeQuery">
+																<customControlFacts>
+																	<customControlFact refDataItem="min"/>
+																	<customControlFact refDataItem="max"/>
+																</customControlFacts>
+															</customControlDataSet>
+														</customControlDataSets>
+														<XMLAttributes>
+															<XMLAttribute name="currentDataSet" value="Range Data Set" output="no"/>
+														</XMLAttributes>
+													</customControl>
+													<block>
+														<contents>
+															<textItem name="txtValue">
+																<dataSource>
+																	<staticValue> </staticValue>
+																</dataSource>
+															</textItem>
+														</contents>
+														<style>
+															<CSS value="text-align:center;font-size:10pt;color:gray;display:none"/>
+														</style>
+													</block>
+												</contents>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<singleton name="Singleton2" refQuery="RangeQuery">
+														<contents>
+															<textItem>
+																<dataSource>
+																	<dataItemValue refDataItem="max"/>
+																</dataSource>
+																<style>
+																	<dataFormat>
+																		<currencyFormat decimalSize="0"/>
+																	</dataFormat>
+																</style>
+															</textItem>
+														</contents>
+													</singleton>
+													<block>
+														<contents>
+															<textItem>
+																<dataSource>
+																	<staticValue>Max</staticValue>
+																</dataSource>
+															</textItem>
+														</contents>
+														<style>
+															<CSS value="text-align:center;font-size:12pt;font-weight:bold;color:#4178BE"/>
+														</style>
+													</block>
+												</contents>
+												<style>
+													<CSS value="padding-left:12px"/>
+												</style>
+											</tableCell>
+										</tableCells>
+										<style>
+											<CSS value="vertical-align:middle"/>
+										</style>
+									</tableRow>
+								</tableRows>
+							</table>
+						</contents>
+						<style>
+							<CSS value="padding:24px"/>
+						</style>
+					</pageHeader>
+				</page>
+			</reportPages>
+		</layout>
+	</layouts>
+	<queries>
+		<query name="RangeQuery">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="min" aggregate="calculated">
+					<expression>minimum( total([Sales (query)].[Sales].[Revenue] for [Sales (query)].[Products].[Product type]) for report )</expression>
+				</dataItem>
+				<dataItem name="max" aggregate="total">
+					<expression>maximum( total([Sales (query)].[Sales].[Revenue] for [Sales (query)].[Products].[Product type]) for report )</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+			<detailFilters>
+				<detailFilter>
+					<filterExpression>[Sales (query)].[Time].[Year] = 2012</filterExpression>
+				</detailFilter>
+			</detailFilters>
+		</query>
+		<query name="ListQuery">
+			<source>
+				<model/>
+			</source>
+			<selection>
+				<dataItem name="Revenue" aggregate="total">
+					<expression>[Sales (query)].[Sales].[Revenue]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="2" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="fact" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Product type" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product type]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+				<dataItem name="Product line" aggregate="none" rollupAggregate="none">
+					<expression>[Sales (query)].[Products].[Product line]</expression>
+					<XMLAttributes>
+						<XMLAttribute name="RS_dataType" value="3" output="no"/>
+						<XMLAttribute name="RS_dataUsage" value="attribute" output="no"/>
+					</XMLAttributes>
+				</dataItem>
+			</selection>
+			<detailFilters>
+				<detailFilter use="optional" postAutoAggregation="true">
+					<filterExpression>[Revenue] &gt;= ?pMin?</filterExpression>
+				</detailFilter>
+				<detailFilter>
+					<filterExpression>[Sales (query)].[Time].[Year] = 2012</filterExpression>
+				</detailFilter>
+			</detailFilters>
+		</query>
+	</queries>
+	<XMLAttributes>
+		<XMLAttribute name="RS_CreateExtendedDataItems" value="true" output="no"/>
+		<XMLAttribute name="RS_modelModificationTime" value="2010-06-14T20:07:25.203Z" output="no"/>
+		<XMLAttribute name="listSeparator" value="," output="no"/>
+	</XMLAttributes>
+	<classStyles>
+		<classStyle name="lt">
+			<CSS value="background-color:#6793CB;background-image:none;color:white;border:1pt solid white"/>
+		</classStyle>
+		<classStyle name="lc">
+			<CSS value="border:1pt solid #82B8FF"/>
+		</classStyle>
+		<classStyle name="lm">
+			<CSS value="border:1pt solid #82B8FF"/>
+		</classStyle>
+		<classStyle name="ls">
+			<CSS value="color:#303030"/>
+		</classStyle>
+	</classStyles>
+</report>
